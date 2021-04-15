@@ -1,8 +1,8 @@
-// import { SolidoModule } from '../src/core/SolidoModule';
+// import { CementoModule } from '../src/core/CementoModule';
 // import { ThorifyPlugin } from '../src/providers/thorify/ThorifyPlugin';
 // import { EnergyTokenContract, EnergyContractImport } from './EnergyContract';
-// // Create Solido Module
-// export const module = new SolidoModule([
+// // Create Cemento Module
+// export const module = new CementoModule([
 //     {
 //         name: 'ConnexToken',
 //         import: EnergyContractImport,

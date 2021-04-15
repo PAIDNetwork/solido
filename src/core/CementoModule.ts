@@ -1,7 +1,7 @@
 
-import { ContractImport, SolidoProviderType } from '../types';
-import { SolidoContract } from './SolidoContract';
-import { SolidoProvider } from '..';
+import { ContractImport, CementoProviderType } from '../types';
+import { CementoContract } from './CementoContract';
+import { CementoProvider } from '..';
 
 function applyMixins(derivedCtor: any, baseCtors: any[]) {
     baseCtors.forEach(baseCtor => {
@@ -29,11 +29,11 @@ export interface ContractProviderMapping {
 }
 
 export interface BindModuleContracts {
-    [key: string]: SolidoContract & SolidoProvider;
+    [key: string]: CementoContract & CementoProvider;
 }
 
 export interface ConnectedContracts {
-    [key: string]: (SolidoContract & SolidoProvider);
+    [key: string]: (CementoContract & CementoProvider);
 }
 /**
  * Contract collection stores the contracts
@@ -41,15 +41,15 @@ export interface ConnectedContracts {
 export class ContractCollection {
     private coll: BindModuleContracts = {};
 
-    add(key: string, c: SolidoContract & SolidoProvider) {
+    add(key: string, c: CementoContract & CementoProvider) {
         this.coll[key] = c;
     }
-    getContract<T>(key: string): T & SolidoContract & SolidoProvider {
+    getContract<T>(key: string): T & CementoContract & CementoProvider {
         return (this.coll[key] as any) as T &
-        SolidoContract &
-        SolidoProvider;
+        CementoContract &
+        CementoProvider;
     }
-    getDynamicContract(key: string): SolidoContract & SolidoProvider {
+    getDynamicContract(key: string): CementoContract & CementoProvider {
         return this.coll[key];
     }
 
@@ -59,7 +59,7 @@ export class ContractCollection {
     connect(): ConnectedContracts {
         const contracts = {};
         Object.keys(this.coll).forEach(i => {
-            const c = (this.coll[i] as SolidoContract);
+            const c = (this.coll[i] as CementoContract);
             c.connect();
             contracts[i] = c;
         })
@@ -70,10 +70,10 @@ export class ContractCollection {
 class Empty { }
 
 /**
- * A Solido Module binds a contract entity to Solido Decorators using mixins
+ * A Cemento Module binds a contract entity to Cemento Decorators using mixins
  */
-export class SolidoModule {
-    providers: SolidoProvider[];
+export class CementoModule {
+    providers: CementoProvider[];
     bindSetupOptions: ProviderInstances;
 
     constructor(private contractMappings: ContractProviderMapping[], ...providers: any[]) {
@@ -81,7 +81,7 @@ export class SolidoModule {
     }
 
     /**
-     * Adds a contract to a solido module
+     * Adds a contract to a cemento module
      */
     addContractMapping(contractProviderMapping: ContractProviderMapping) {
         this.contractMappings.push(contractProviderMapping);
@@ -157,8 +157,8 @@ export class SolidoModule {
         const init: any = function fn() { }
         init.prototype = Object.create(c.entity.prototype);
 
-        // Apply provider and SolidoProvider Plugin to entity type
-        applyMixins(init, [provider, SolidoProvider]);
+        // Apply provider and CementoProvider Plugin to entity type
+        applyMixins(init, [provider, CementoProvider]);
         const instance = new init();
         instance.setContractImport(c.import);
         if (c.enableDynamicStubs) {
@@ -167,11 +167,11 @@ export class SolidoModule {
 
         let name = c.name;
         const providerKeyName = instance.getProviderType();
-        const providerName = SolidoProviderType[providerKeyName];
+        const providerName = CementoProviderType[providerKeyName];
         if (generateName) {
             name = `${providerName}${c.name}`;
         }
-        const contract = instance as SolidoContract & SolidoProvider;
+        const contract = instance as CementoContract & CementoProvider;
         collection.add(name, contract);
 
         if (setupOptions) {

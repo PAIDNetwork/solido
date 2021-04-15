@@ -1,20 +1,20 @@
 import 'jasmine';
-import { ThorifySolidoTopic } from '../src/providers/thorify/ThorifySolidoTopic';
+import { ThorifyCementoTopic } from '../src/providers/thorify/ThorifyCementoTopic';
 import { module } from './index';
 import { EnergyTokenContract, EnergyContractImport } from './EnergyContract';
 import { Read } from '../src/decorators/Read';
 import { IMethodOrEventCall, EventFilterOptions } from '../src/types';
 import { ThorifySettings } from '../src/providers/thorify/ThorifySettings';
 import { Write, GetEvents } from '../src/decorators';
-import { SolidoModule } from '../src/core/SolidoModule';
-import { ThorifyPlugin, SolidoContract, SolidoProvider } from '../src';
+import { CementoModule } from '../src/core/CementoModule';
+import { ThorifyPlugin, CementoContract, CementoProvider } from '../src';
 const Web3 = require('web3');
 const { thorify } = require('thorify');
 
 describe('ThorifyProvider', () => {
     describe('#ThorifyPlugin', () => {
         let thor;
-        let tokenContract: EnergyTokenContract & SolidoContract & SolidoProvider;
+        let tokenContract: EnergyTokenContract & CementoContract & CementoProvider;
         beforeEach(async () => {
             const privateKey =
         '0xdce1443bd2ef0c2631adc1c67e5c93f13dc23a41c18b536effbbdcbcdb96fb65';
@@ -33,9 +33,9 @@ describe('ThorifyProvider', () => {
                     }
                 }
             } as any;
-            // Create Solido Module
+            // Create Cemento Module
             // Uses short module syntax
-            const module = new SolidoModule(
+            const module = new CementoModule(
                 [
                     {
                         name: 'Token',
@@ -64,7 +64,7 @@ describe('ThorifyProvider', () => {
         });
 
         it('should generate topics for Connex', async () => {
-            const topics = new ThorifySolidoTopic();
+            const topics = new ThorifyCementoTopic();
 
             const seq = topics
                 .topic('0xc')

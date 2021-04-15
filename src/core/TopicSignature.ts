@@ -1,3 +1,3 @@
 export class TopicSignature {
-  constructor(public signature: string) {}
+    constructor(public signature: string) {}
 }

@@ -1,10 +1,10 @@
 import { validate } from './Utils';
 import { IMethodOrEventCall } from '../types';
-import { SolidoContract } from '../core/SolidoContract';
+import { CementoContract } from '../core/CementoContract';
 
 export function _Read(
     name: string,
-    contract: SolidoContract,
+    contract: CementoContract,
     args: any[],
     options: IMethodOrEventCall = {}
 ) {
@@ -20,7 +20,7 @@ export function _Read(
 }
 
 /**
- * Annotates a Solido call
+ * Annotates a Cemento call
  * @param options IMethodOrEventCall props
  */
 export function Read(options: IMethodOrEventCall = {}) {

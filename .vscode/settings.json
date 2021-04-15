@@ -5,5 +5,11 @@
     { "language": "javasacript", "autoFix": true },
     { "language": "typescript", "autoFix": true }
   ],
-  "jasmineExplorer.nodeArgv": ["-r", "ts-node/register"]
+  "jasmineExplorer.nodeArgv": [
+    "-r",
+    "ts-node/register"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

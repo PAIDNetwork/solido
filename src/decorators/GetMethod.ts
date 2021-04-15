@@ -1,7 +1,7 @@
-import { SolidoContract } from '../core/SolidoContract';
+import { CementoContract } from '../core/CementoContract';
 
 /**
- * Annotates a Solido get method
+ * Annotates a Cemento get method
  * @param options props
  */
 export function GetMethod(options: { name: string }) {
@@ -10,7 +10,7 @@ export function GetMethod(options: { name: string }) {
         propertyKey: string
     ) => {
         const getMethod = function() {
-            const self = this as SolidoContract;
+            const self = this as CementoContract;
             return self.getMethod(
                 options.name || propertyKey
             );

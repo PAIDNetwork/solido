@@ -1,4 +1,4 @@
-import { ContractImport, SolidoProviderType } from '../types';
+import { ContractImport, CementoProviderType } from '../types';
 import { TopicSignature } from './TopicSignature';
 import { _Read, _Write, _GetEvent } from '../decorators';
 
@@ -7,15 +7,15 @@ import { _Read, _Write, _GetEvent } from '../decorators';
  * A provider is a plugin to use contract entities with a blockchain. The main task of a provider is to load up the Solidity ABI definition
  * and enable any auto generated helpers or methods.
  */
-export abstract class SolidoProvider {
+export abstract class CementoProvider {
     public topics: { [key: string]: TopicSignature };
     public methods: { [key: string]: any };
     public events: { [key: string]: any };
     protected abi: any[];
     protected contractImport: ContractImport;
-    protected providerType: SolidoProviderType;
+    protected providerType: CementoProviderType;
 
-    public abstract getProviderType(): SolidoProviderType;
+    public abstract getProviderType(): CementoProviderType;
 
     protected buildDynamicStubs(): void {
         if (this.abi.length > 0) {

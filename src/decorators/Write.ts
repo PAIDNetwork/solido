@@ -1,8 +1,8 @@
 import { validate } from './Utils';
 import { IMethodOrEventCall, IMethodConfig } from '../types';
-import { SolidoContract } from '../core/SolidoContract';
+import { CementoContract } from '../core/CementoContract';
 
-export function _Write(name: string, contract: SolidoContract, args: any[], options: IMethodOrEventCall = {}) {
+export function _Write(name: string, contract: CementoContract, args: any[], options: IMethodOrEventCall = {}) {
     return {
         // to avoid conflicts with pure javascript clients
         request: async (config: IMethodConfig) => {
@@ -36,7 +36,7 @@ export function _Write(name: string, contract: SolidoContract, args: any[], opti
     }
 }
 /**
- * Annotates a Solido signing call
+ * Annotates a Cemento signing call
  * @param options An IMethodOrEventCall props
  */
 export function Write(options: IMethodOrEventCall = {}) {

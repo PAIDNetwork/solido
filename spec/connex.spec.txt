@@ -3,13 +3,13 @@ import { module } from './index';
 import { EnergyTokenContract, EnergyContractImport } from './EnergyContract';
 import { Read, Write, GetEvents } from '../src/decorators';
 import { IMethodOrEventCall, EventFilterOptions } from '../src/types';
-import { ConnexSolidoTopic } from '../src/providers/connex/ConnexSolidoTopic';
-import { SolidoModule, ConnexPlugin, ThorifyPlugin, SolidoProvider, SolidoContract } from '../src';
+import { ConnexCementoTopic } from '../src/providers/connex/ConnexCementoTopic';
+import { CementoModule, ConnexPlugin, ThorifyPlugin, CementoProvider, CementoContract } from '../src';
 
 describe('Connex Provider', () => {
     describe('#ConnexPlugin', () => {
         it('should generate topics for Connex', async () => {
-            const topics = new ConnexSolidoTopic();
+            const topics = new ConnexCementoTopic();
 
             const seq = topics
                 .topic(0, '0xc')
@@ -29,9 +29,9 @@ describe('Connex Provider', () => {
             const chainTag = '0xa4';
             const defaultAccount = '0x';
 
-            // Create Solido Module
+            // Create Cemento Module
             // Uses short module syntax
-            const module = new SolidoModule(
+            const module = new CementoModule(
                 [
                     {
                         name: 'Token',
@@ -44,7 +44,7 @@ describe('Connex Provider', () => {
                 ThorifyPlugin
             );
             const contracts = module.bindContracts();
-            const token = contracts.getContract<EnergyTokenContract &  SolidoContract>('ConnexToken');
+            const token = contracts.getContract<EnergyTokenContract &  CementoContract>('ConnexToken');
             const spy = spyOn(token, 'onReady');
             token.onReady({ connex, chainTag, defaultAccount });
 

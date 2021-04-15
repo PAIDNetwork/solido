@@ -1,6 +1,6 @@
-import { SolidoContract } from '../core/SolidoContract';
+import { CementoContract } from '../core/CementoContract';
 
-export function _GetEvent(name: string, contract: SolidoContract) {
+export function _GetEvent(name: string, contract: CementoContract) {
     return contract.getEvent(name);        
 }
 
@@ -14,7 +14,7 @@ export function GetEvent(options?: { name: string }) {
         propertyKey: string
     ) => {
         const getEvent = function() {
-            const self = this as SolidoContract;
+            const self = this as CementoContract;
             return self.getEvent(
                 options.name || propertyKey
             );

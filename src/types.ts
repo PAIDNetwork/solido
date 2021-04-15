@@ -76,7 +76,7 @@ export interface EventFilterOptions<T> extends EventFilter<T> {
     name?: string;
 }
 
-export enum SolidoProviderType {
+export enum CementoProviderType {
     Connex = 'connex',
     Thorify = 'thorify',
     Web3 = 'web3',

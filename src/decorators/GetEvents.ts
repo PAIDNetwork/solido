@@ -1,5 +1,5 @@
 import { EventFilter, EventFilterOptions } from '../types';
-import { SolidoContract } from '../core/SolidoContract';
+import { CementoContract } from '../core/CementoContract';
 /**
  * Annotates a Get events call
  * 
@@ -11,7 +11,7 @@ export function GetEvents<P, T>(options: EventFilterOptions<T>) {
         propertyKey: string
     ) => {
         const getEventsCall = function(fnOptions?: EventFilter<T>) {
-            const self = this as SolidoContract;
+            const self = this as CementoContract;
             
             const callOptions = {
                 ...options,

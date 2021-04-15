@@ -1,7 +1,7 @@
-export * from './core/SolidoModule';
-export * from './core/SolidoProvider';
-export * from './core/SolidoContract';
-export * from './core/SolidoTopic';
+export * from './core/CementoModule';
+export * from './core/CementoProvider';
+export * from './core/CementoContract';
+export * from './core/CementoTopic';
 
 
 export * from './decorators';

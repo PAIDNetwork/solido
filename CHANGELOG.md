@@ -13,4 +13,4 @@
 
 ### 1.0.0
 
-* Solido release
+* Cemento release

@@ -1,15 +1,15 @@
 ## Provider plugin tutorial
 
-A provider implements a SolidoContract interface for a blockchain client API (eg Connex, Thorify, Web3) and extends SolidoProvider, which attaches an ABI import to a contract entity.
+A provider implements a CementoContract interface for a blockchain client API (eg Connex, Thorify, Web3) and extends CementoProvider, which attaches an ABI import to a contract entity.
 
 ### Plugin interfaces
 
-* `SolidoContract`
-* `SolidoSigner`
-* `SolidoTopic`
+* `CementoContract`
+* `CementoSigner`
+* `CementoTopic`
 
 
-### SolidoContract
+### CementoContract
 
 
 #### address
@@ -43,13 +43,13 @@ Calls an event log query and returns a Promise
 
 #### prepareSigning
 
-Creates a signing request and returns a Promise<SolidoSigner>
+Creates a signing request and returns a Promise<CementoSigner>
 
 #### onReady
 
 Instantiates a contract using the provider connection settings.
 
-### SolidoSigner
+### CementoSigner
 
 #### payload
 
@@ -59,7 +59,7 @@ The payload to sign
 
 Executes a signing request and returns a Promise
 
-### SolidoTopic
+### CementoTopic
 
 #### get
 
@@ -79,7 +79,7 @@ Adds a topic. Called as `topic(0, '0xb') for web3 compatible providers.
 
 ### Provider settings and OnReady
 
-Before Solido can be used in an application, you first define a bootstrapper and then connect each contract to a provider using OnReady.
+Before Cemento can be used in an application, you first define a bootstrapper and then connect each contract to a provider using OnReady.
 
 
 1. Create module and bind ABI imports
@@ -89,7 +89,7 @@ Before Solido can be used in an application, you first define a bootstrapper and
 
 
 ```typescript
-export const module = new SolidoModule([
+export const module = new CementoModule([
     {
         name: 'ConnexToken',
         import: EnergyContractImport,

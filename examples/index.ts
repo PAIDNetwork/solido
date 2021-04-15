@@ -1,16 +1,16 @@
-import { SolidoModule } from '../src/core/SolidoModule';
+import { CementoModule } from '../src/core/CementoModule';
 import { ThorifyPlugin } from '../src/providers/thorify/ThorifyPlugin';
 import { ThorifySettings } from '../src/providers/thorify/ThorifySettings';
 import { ConnexPlugin } from '../src/providers/connex/ConnexPlugin';
 import { EnergyTokenContract, EnergyContractImport } from './EnergyContract';
 import BigNumber from 'bignumber.js';
-import { SolidoProviderType } from '../src';
+import { CementoProviderType } from '../src';
 const Web3 = require('web3');
 const { thorify } = require('thorify');
 
-// Create Solido Module
+// Create Cemento Module
 // Uses short module syntax
-export const module = new SolidoModule([
+export const module = new CementoModule([
     {
         name: 'Token',
         import: EnergyContractImport,
